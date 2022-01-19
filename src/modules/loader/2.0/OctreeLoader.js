@@ -34,9 +34,7 @@ export class NodeLoader{
 
 			let {byteOffset, byteSize} = node;
 
-
-			let urlOctree = `${this.url}/../octree.bin`;
-
+			let urlOctree = this.url.octree; //`${this.url}/../octree.bin`;
 			let first = byteOffset;
 			let last = byteOffset + byteSize - 1n;
 
@@ -238,8 +236,8 @@ export class NodeLoader{
 	async loadHierarchy(node){
 
 		let {hierarchyByteOffset, hierarchyByteSize} = node;
-		let hierarchyPath = `${this.url}/../hierarchy.bin`;
 		
+		let hierarchyPath = this.url.hierarchy ; //`${this.url}/../hierarchy.bin`;
 		let first = hierarchyByteOffset;
 		let last = first + hierarchyByteSize - 1n;
 
@@ -378,8 +376,7 @@ export class OctreeLoader{
 	}
 
 	static async load(url){
-
-		let response = await fetch(url);
+		let response = await fetch(url.metadata);
 		let metadata = await response.json();
 
 		let attributes = OctreeLoader.parseAttributes(metadata.attributes);
@@ -391,7 +388,7 @@ export class OctreeLoader{
 		loader.offset = metadata.offset;
 
 		let octree = new OctreeGeometry();
-		octree.url = url;
+		octree.url = url.metadata;
 		octree.spacing = metadata.spacing;
 		octree.scale = metadata.scale;
 

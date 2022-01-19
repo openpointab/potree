@@ -139,7 +139,7 @@ export function loadPointCloud(path, name, callback){
 		// load pointcloud
 		if (!path){
 			// TODO: callback? comment? Hello? Bueller? Anyone?
-		} else if (path.indexOf('ept.json') > 0) {
+		} else if (typeof path === 'string' && path.indexOf('ept.json') > 0) {
 			EptLoader.load(path, function(geometry) {
 				if (!geometry) {
 					console.error(new Error(`failed to load point cloud from URL: ${path}`));
@@ -150,7 +150,7 @@ export function loadPointCloud(path, name, callback){
 					resolve({type: 'pointcloud_loaded', pointcloud: pointcloud});
 				}
 			});
-		} else if (path.indexOf('cloud.js') > 0) {
+		} else if (typeof path === 'string' && path.indexOf('cloud.js') > 0) {
 			POCLoader.load(path, function (geometry) {
 				if (!geometry) {
 					//callback({type: 'loading_failed'});
@@ -161,7 +161,7 @@ export function loadPointCloud(path, name, callback){
 					resolve({type: 'pointcloud_loaded', pointcloud: pointcloud});
 				}
 			});
-		} else if (path.indexOf('metadata.json') > 0) {
+		} else if (typeof path === 'object' && path !== null ) {
 			Potree.OctreeLoader.load(path).then(e => {
 				let geometry = e.geometry;
 
@@ -193,7 +193,7 @@ export function loadPointCloud(path, name, callback){
 					resolve({type: 'pointcloud_loaded', pointcloud: pointcloud});
 				}
 			});
-		} else if (path.indexOf('.vpc') > 0) {
+		} else if (typeof path === 'string' && path.indexOf('.vpc') > 0) {
 			PointCloudArena4DGeometry.load(path, function (geometry) {
 				if (!geometry) {
 					//callback({type: 'loading_failed'});
