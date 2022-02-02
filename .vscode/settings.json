@@ -5,7 +5,7 @@
 		"*.fs": "cpp"
 	},
 	"files.trimTrailingWhitespace": false,
-	"editor.fontSize": 28,
+	"editor.fontSize": 15,
 	"editor.autoIndent": false,
 	"editor.detectIndentation": false,
 	"editor.insertSpaces": false,
@@ -15,6 +15,6 @@
 	"editor.acceptSuggestionOnEnter": "off",
 	"editor.acceptSuggestionOnCommitCharacter": false,
 	"editor.mouseWheelZoom": true,
-	"editor.renderWhitespace": "all",
+	
 	"workbench.tree.indent": 30,
 }
