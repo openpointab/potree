@@ -47,7 +47,7 @@ export class NodeLoader {
         buffer = new ArrayBuffer(0);
         console.warn(`loaded node with 0 bytes: ${node.name}`);
       } else {
-        const blobUrl = await this.url.fetchObject(
+        const fileArrayBuffer = await this.url.fetchObject(
           urlOctree,
           "",
           undefined,
@@ -59,8 +59,8 @@ export class NodeLoader {
         // 		'Range': `bytes=${first}-${last}`,
         // 	},
         // });
-        let response = await fetch(blobUrl);
-        buffer = await response.arrayBuffer();
+        //let response = await fetch(blobUrl);
+        buffer = fileArrayBuffer //await response.arrayBuffer();
       }
 
       let workerPath;
@@ -259,7 +259,7 @@ export class NodeLoader {
     let first = hierarchyByteOffset;
     let last = first + hierarchyByteSize - 1n;
 
-	 const blobUrl = await this.url.fetchObject(
+	 const fileArrayBuffer = await this.url.fetchObject(
           hierarchyPath,
           "",
           undefined,
@@ -272,9 +272,9 @@ export class NodeLoader {
     //     Range: `bytes=${first}-${last}`,
     //   },
     // });
-	let response = await fetch(blobUrl);
+	//let response = await fetch(blobUrl);
 
-    let buffer = await response.arrayBuffer();
+    let buffer = fileArrayBuffer //await response.arrayBuffer();
 
     this.parseHierarchy(node, buffer);
 
