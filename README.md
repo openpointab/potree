@@ -1,4 +1,8 @@
+# Custom Potree
 
+This branch (`signed-url-loader`) contains custom handling of point cloud containers served from the openpoint platform.
+
+Created by [@karthik3dinteractive](https://github.com/openpointab/potree/commits?author=karthik3dinteractive)
 
 # About
 
